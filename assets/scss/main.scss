@@ -1,0 +1,34 @@
+@import "components/_reset.scss";
+@import "components/_variables.scss";
+
+
+body
+{
+    background-color: $bg-color;
+    font-size: 16px;
+    color: black;
+    font-family: PlayfairDisplay;
+}
+
+h1
+{
+    font-weight: 800;
+    font-size: 24px;
+    padding: 20px;
+    color: $dark-color;
+    text-align: center;
+}
+
+.container
+{
+    width: 70vw;
+    height: 70vh;
+    margin: auto;
+}
+
+.mouse
+{
+  width: 20px;
+  height: 20px;
+  position: absolute;
+}

@@ -22,8 +22,8 @@ var canvas1 = new canvas (1200, 500);
 canvas1.create();
 
 // Functions random
-function random(posX) { return Math.floor(Math.random() * canvas1.width); }
-function random(posY) { return Math.floor(Math.random() * canvas1.height); }
+function randomX() { return Math.abs(Math.floor(Math.random() * canvas1.width - 50)); }
+function randomY() { return Math.abs(Math.floor(Math.random() * canvas1.height - 50)); }
 
 
 // Create cheese object
@@ -32,8 +32,8 @@ var cheese = function(width, height, posX, posY, size, addTime)
     // Proprieties
     this.width = width;
     this.height = height;
-    this.posX = (posX);
-    this.posY = (posY);
+    this.posX = posX;
+    this.posY = posY;
     this.size = size;
     this.addTime = addTime;
 
@@ -53,9 +53,15 @@ var cheese = function(width, height, posX, posY, size, addTime)
     }
 }
 
-var cheeseSmall = new cheese (50, 50, 100,100, 1, 10);
-cheeseSmall.create();
-console.log(cheeseSmall.posX, cheeseSmall.posY);
+// Create cheeses on game
+var cheeses = [];
+for (var i = 0; i < 3; i++)
+{
+    var cheeseSmall = new cheese (50, 50, randomX(), randomY(), 1, 10);
+    cheeseSmall.create();
+    cheeses.push(cheeseSmall);
+}
+
 
 // Create mouse object
 var mouse = function(posX, posY, speed)
@@ -100,11 +106,9 @@ var mouse = function(posX, posY, speed)
             _this.div.style.left= _this.posX +"px";
             _this.div.style.top = _this.posY +"px";
 
-            console.log(mouse1.posX, mouse1.posY);
-            console.log(cheeseSmall.posX, cheeseSmall.posY);
-
-            collision();
+        collision(30,30);
         }, false);
+
     }
 }
 
@@ -115,15 +119,15 @@ mouse1.create();
 mouse1.move();
 
 // Collision function
-
-function collision()
+function collision(errorX, errorY)
 {
-    if (((mouse1.posX + (cheeseSmall.width/2)) == cheeseSmall.posX) &&
-        ((mouse1.posY + (cheeseSmall.height/2)) == cheeseSmall.posY) &&
-        ((mouse1.posX - (cheeseSmall.width/2)) == cheeseSmall.posX) &&
-        ((mouse1.posY - (cheeseSmall.height/2)) == cheeseSmall.posY))
+    if (mouse1.posX - errorX <= cheeseSmall.posX &&
+        mouse1.posX + errorX >= cheeseSmall.posX &&
+        mouse1.posY - errorY <= cheeseSmall.posY &&
+        mouse1.posY + errorY >= cheeseSmall.posY)
     {
-        alert("ve");
+        cheeseSmall.posX = randomX();
+        cheeseSmall.posY = randomY();
+        console.log(cheeseSmall.posX, cheeseSmall.posY);
     }
-    console.log(cheeseSmall.width, cheeseSmall.height);
 }

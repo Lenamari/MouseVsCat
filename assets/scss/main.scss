@@ -28,7 +28,7 @@ h1
 .canvas
 {
     position: relative;
-    background-image: url('../img/parquet7<3.jpg');
+    background-image: url('../img/background.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -36,20 +36,24 @@ h1
 
 .mouse
 {
-  width: 50px;
-  height: 50px;
-  position: absolute;
-  background-image: url('../img/Mouse_maquillée_carré.png');
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
- .cheese
- {
+    width: 100px;
+    height: 100px;
     position: absolute;
-    background-image: url('../img/fromage.png');
+    background-image: url('../img/mouse_makeup.png');
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
- }
+}
+
+.cheese
+{
+    position: absolute;
+    background-image: url('../img/cheese.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.dirBottom { transform: rotate(180deg) };
+.dirLeft { transform: rotate(-90deg) };
+.dirTop { transform: rotate(0deg) };
+.dirRight { transform: rotate(90deg) };

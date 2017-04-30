@@ -81,7 +81,7 @@ var mouse = function(posX, posY, speed)
     this.create = function()
     {
         this.div = document.createElement('div');
-        this.div.classList.add('mouse');
+        this.div.classList.add('mouse', 'dirRight');
         this.div.style.top = this.posY + 'px';
         this.div.style.left = this.posX + 'px';
 
@@ -95,13 +95,26 @@ var mouse = function(posX, posY, speed)
         document.addEventListener('keydown', function(event)
         {
             if (event.keyCode == _this.cross[0])
+            {
                 _this.posY -= _this.speed;
+                _this.div.className="mouse dirTop";
+            }
+
             else if (event.keyCode == _this.cross[1])
+            {
                 _this.posX += _this.speed;
+                _this.div.className="mouse dirRight";
+            }
             else if (event.keyCode == _this.cross[2])
+            {
                 _this.posY += _this.speed;
+                _this.div.className="mouse dirBottom";
+            }
             else if (event.keyCode == _this.cross[3])
+            {
                 _this.posX -= _this.speed;
+                _this.div.className = "mouse dirLeft";
+            }
 
             _this.div.style.left= _this.posX +"px";
             _this.div.style.top = _this.posY +"px";
@@ -113,7 +126,7 @@ var mouse = function(posX, posY, speed)
 }
 
 // New mouse
-var mouse1 = new mouse (0, 0, 10);
+var mouse1 = new mouse (10, 20, 10);
 mouse1.cross = [38,39,40,37];
 mouse1.create();
 mouse1.move();

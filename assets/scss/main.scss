@@ -27,19 +27,29 @@ h1
 
 .canvas
 {
-    position: absolute;
+    position: relative;
+    background-image: url('../img/parquet7<3.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .mouse
 {
-  width: 20px;
-  height: 20px;
-  position: relative;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  background-image: url('../img/Mouse_maquillée_carré.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
  .cheese
  {
-    width: 20px;
-    height: 20px;
-    position: relative;
+    position: absolute;
+    background-image: url('../img/fromage.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
  }

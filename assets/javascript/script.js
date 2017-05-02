@@ -64,9 +64,11 @@ for (var i = 0; i < 3; i++)
 
 
 // Create mouse object
-var mouse = function(posX, posY, speed)
+var mouse = function(width, height, posX, posY, speed)
 {
     // Proprieties
+    this.width = width;
+    this.height = height;
     this.posX = posX;
     this.posY = posY;
     this.speed = speed;
@@ -82,6 +84,8 @@ var mouse = function(posX, posY, speed)
     {
         this.div = document.createElement('div');
         this.div.classList.add('mouse', 'dirRight');
+        this.div.style.width = this.width + 'px';
+        this.div.style.height = this.height + 'px';
         this.div.style.top = this.posY + 'px';
         this.div.style.left = this.posX + 'px';
 
@@ -119,15 +123,16 @@ var mouse = function(posX, posY, speed)
             _this.div.style.left= _this.posX +"px";
             _this.div.style.top = _this.posY +"px";
 
-        collision(30,30);
+        collision(mouse1.width/2,mouse1.height/2);
         }, false);
 
     }
 }
 
 // New mouse
-var mouse1 = new mouse (10, 20, 10);
+var mouse1 = new mouse (100, 100, 10, 20, 10);
 mouse1.cross = [38,39,40,37];
+
 mouse1.create();
 mouse1.move();
 
@@ -139,8 +144,6 @@ function collision(errorX, errorY)
         mouse1.posY - errorY <= cheeseSmall.posY &&
         mouse1.posY + errorY >= cheeseSmall.posY)
     {
-        cheeseSmall.posX = randomX();
-        cheeseSmall.posY = randomY();
-        console.log(cheeseSmall.posX, cheeseSmall.posY);
+        alert('eat !')
     }
 }

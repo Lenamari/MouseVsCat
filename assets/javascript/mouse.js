@@ -90,18 +90,19 @@ var mouse = function(width, height, posX, posY, speed, dirX, dirY)
                     {
                         _this.posX = 1;
                     }
-                    else if (_this.posX >= canvas1.width-50) {
-                        _this.posX = canvas1.width-51;
+                    else if (_this.posX >= canvas1.width-_this.width) {
+                        _this.posX = canvas1.width - _this.width - 1;
                     }
                     else {
                         _this.posX += _this.dirX;
                     }
+
                     if (_this.posY <= 0)
                     {
                         _this.posY = 1;
                     }
-                    else if (_this.posY >= canvas1.height-100) {
-                        _this.posY = canvas1.height-101;
+                    else if (_this.posY >= canvas1.height-_this.height) {
+                        _this.posY = canvas1.height- _this.height - 1;
                     }
                     else {
                         _this.posY += _this.dirY;
@@ -123,7 +124,7 @@ var mouse = function(width, height, posX, posY, speed, dirX, dirY)
 }
 
 // New mouse
-var mouse1 = new mouse (100, 100, 20, 20, 2, 0, 0);
+var mouse1 = new mouse (70, 70, 20, 20, 2, 0, 0);
 mouse1.cross = [38,39,40,37];
 
 mouse1.create();

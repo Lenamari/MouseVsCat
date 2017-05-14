@@ -8,6 +8,7 @@ body
     font-size: 16px;
     color: black;
     font-family: PlayfairDisplay;
+    overflow: hidden;
 }
 
 h1
@@ -27,6 +28,7 @@ h1
 
 .canvas
 {
+    overflow: hidden;
     position: relative;
     background-image: url('../img/background.jpg');
     background-size: cover;

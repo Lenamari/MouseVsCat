@@ -1,16 +1,16 @@
 // Create cheese object
-var cheeseTotal = 5;
+var cheeses = [];
+var cheeses.length = 5;
+console.log(cheeses.length);
 var score = 0;
-var cheese = function(width, height, posX, posY, size, addTime, speed)
+var cheese = function(width, height, posX, posY, speed)
 {
     // Properties
     this.width = width;
     this.height = height;
+    this.dirX;
     this.posX = posX;
     this.posY = posY;
-    this.size = size;
-    this.addTime = addTime;
-    this.dirX;
     this.speed = speed;
     this.div;
     // Methods
@@ -25,6 +25,14 @@ var cheese = function(width, height, posX, posY, size, addTime, speed)
 
         var canvas = container.querySelector('.canvas');
         canvas.appendChild(this.div);
+    }
+    this.add = function()
+    {
+        var _this = this;
+
+        var add = {};
+        add.posY = _this.posY;
+        cheeses.push(add);
     }
     this.direction = function()
     {
@@ -54,7 +62,6 @@ var cheese = function(width, height, posX, posY, size, addTime, speed)
                 _this.posX = canvas1.width - _this.width;
                 _this.posY = randomY();
                 score += 1;
-                console.log(score);
             }
 
         }, 30)
@@ -62,15 +69,24 @@ var cheese = function(width, height, posX, posY, size, addTime, speed)
 }
 
 // Create cheeses array
-function spawn()
+
+
+for (var i = 0; i < cheesesLength; i++)
 {
-    var cheeses=[];
-    for (var i = 0; i < cheeseTotal; i++)
+    var cheese1 = new cheese ( 50, 50, canvas1.width, randomY(), random(12) );
+    cheese1.create();
+    cheese1.add();
+    cheese1.direction();
+}
+for (var i = 0; i < cheeses.length - 1; i++)
+{
+    if (cheeses[i].posY < (cheeses[i+1].posY + cheese1.height * 2))
     {
-        var cheese1 = new cheese(50,50,canvas1.width, randomY(), 1, 10, random(12) )
-        cheeses.push(cheese1);
-        cheese1.create();
-        cheese1.direction();
+        cheeses[i].posY = randomY()
+        cheeses[i+1].posY = randomY()
+    }
+    else
+    {
+
     }
 }
-spawn()

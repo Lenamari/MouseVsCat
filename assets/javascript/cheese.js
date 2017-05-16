@@ -1,7 +1,5 @@
 // Create cheese object
 var cheeses = [];
-var cheeses.length = 5;
-console.log(cheeses.length);
 var score = 0;
 var cheese = function(width, height, posX, posY, speed)
 {
@@ -70,23 +68,22 @@ var cheese = function(width, height, posX, posY, speed)
 
 // Create cheeses array
 
-
-for (var i = 0; i < cheesesLength; i++)
+for (var i = 0; i < 10; i++)
 {
     var cheese1 = new cheese ( 50, 50, canvas1.width, randomY(), random(12) );
     cheese1.create();
     cheese1.add();
     cheese1.direction();
 }
-for (var i = 0; i < cheeses.length - 1; i++)
-{
-    if (cheeses[i].posY < (cheeses[i+1].posY + cheese1.height * 2))
-    {
-        cheeses[i].posY = randomY()
-        cheeses[i+1].posY = randomY()
-    }
-    else
-    {
-
-    }
-}
+// for (var i = 0; i < cheeses.length - 1; i++)
+// {
+//     if (cheeses[i].posY < (cheeses[i+1].posY + cheese1.height * 2))
+//     {
+//         cheeses[i].posY = randomY()
+//         cheeses[i+1].posY = randomY()
+//     }
+//     else
+//     {
+//
+//     }
+// }

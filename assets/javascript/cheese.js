@@ -60,6 +60,7 @@ var cheese = function(width, height, posX, posY, speed)
                 _this.posX = canvas1.width - _this.width;
                 _this.posY = randomY();
                 score += 1;
+                console.log('score: ' + score);
             }
 
         }, 30)
@@ -68,13 +69,15 @@ var cheese = function(width, height, posX, posY, speed)
 
 // Create cheeses array
 
-for (var i = 0; i < 10; i++)
+
+
+for (var i = 0; i < 4; i++)
 {
-    var cheese1 = new cheese ( 50, 50, canvas1.width, randomY(), random(12) );
+    var cheese1 = new cheese ( 50, 50, randomX(), randomY(), random(12) );
     cheese1.create();
     cheese1.add();
-    cheese1.direction();
 }
+
 // for (var i = 0; i < cheeses.length - 1; i++)
 // {
 //     if (cheeses[i].posY < (cheeses[i+1].posY + cheese1.height * 2))

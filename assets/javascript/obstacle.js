@@ -1,11 +1,10 @@
 var obstacle = function(width, height, posX, posY)
 {
-    this.width = width;
-    this.height = height;
-    this.posX = posX;
-    this.posY = posY;
-
     this.div;
+    this.width = width;
+    this.height = width;
+    this.posX = randomX();
+    this.posY = randomY();
 
     this.create = function()
     {
@@ -19,7 +18,18 @@ var obstacle = function(width, height, posX, posY)
         var canvas = container.querySelector('.canvas');
         canvas.appendChild(this.div);
     }
+    this.margin = function()
+    {
+        if (this.width ) {
+
+        }
+    }
+
 }
 
-var obstacle1 = new obstacle( 10, 10, randomX(), randomY() )
-obstacle.create();
+
+for (var i = 0; i < 4; i++)
+{
+    var obstacle1 = new obstacle( 100, 100, randomX(), randomY() )
+    obstacle1.create();
+}

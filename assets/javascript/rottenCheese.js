@@ -1,7 +1,7 @@
-var cheeses = [];
+var rottenCheeses = [];
 
 // Create cheese object
-var cheese = function(width, height, posX, posY)
+var rottenCheese = function(width, height, posX, posY)
 {
     // Properties
     this.width = width;
@@ -14,22 +14,22 @@ var cheese = function(width, height, posX, posY)
     // Methods
     this.create = function()
     {
-        cheeses.push(this);
+        rottenCheeses.push(this);
 
         this.div = document.createElement('div');
-        this.div.classList.add('cheese');
+        this.div.classList.add('rotten-cheese');
         this.div.style.width = this.width + 'px';
         this.div.style.height = this.height + 'px';
         this.div.style.top = this.posY + 'px';
         this.div.style.left = this.posX + 'px';
-
+        
         var canvas = container.querySelector('.canvas');
         canvas.appendChild(this.div);
     }
 }
 
-for (var i = 0; i <= 10; i++)
+for (var i = 0; i <= 5; i++)
 {
-    var cheese1 = new cheese ( 50, 50, randomX(), randomY() );
-    cheese1.create();
+    var rottenCheese1 = new rottenCheese ( 50, 50, randomX(), randomY() );
+    rottenCheese1.create();
 }

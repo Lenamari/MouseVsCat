@@ -1,3 +1,4 @@
+var body = document.querySelector('body');
 var container = document.querySelector('.container');
 var scoreDiv = container.querySelector('.score > span'),
     score = 0;
@@ -8,6 +9,7 @@ var canvas = function(width, height)
     // Properties
     this.width = width;
     this.height = height;
+    this.div;
 
     // Methods
     this.create = function()
@@ -22,3 +24,19 @@ var canvas = function(width, height)
 // New canvas
 var canvas1 = new canvas (1200, 500);
 canvas1.create();
+
+var blackOut = function()
+{
+    this.div;
+
+    this.create = function()
+    {
+        this.div = document.createElement('div');
+        this.div.classList.add('black-out');
+        body.appendChild(this.div);
+    }
+    this.remove = function()
+    {
+        this.div.remove();
+    }
+}

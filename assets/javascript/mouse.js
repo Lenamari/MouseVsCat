@@ -114,11 +114,37 @@ var mouse = function(width, height, posX, posY, speed, dirX, dirY)
                         }
                     }
 
+                    // Eat rotten-cheese
+                    for (var i = 0; i < rottenCheeses.length - 1; i++) {
+                        if (
+                            _this.posY - _this.height/2 < rottenCheeses[i].posY &&
+                            _this.posY + _this.height/2 > rottenCheeses[i].posY &&
+                            _this.posX - _this.width/2 < rottenCheeses[i].posX &&
+                            _this.posX + _this.width/2 > rottenCheeses[i].posX
+                        )
+                        {
+                            if (score <= 0)
+                                score = 0
+                            else
+                            {
+                                score -= 1;
+                                var blackOut1 = new blackOut();
+                                blackOut1.create();
+                                setTimeout(function()
+                                {
+                                    blackOut1.remove();
+                                }, 500);
+
+                            }
+                            scoreDiv.innerHTML = score;
+                        }
+                    }
+
                     // Update position
                     _this.div.style.left= _this.posX +"px";
                     _this.div.style.top = _this.posY +"px";
 
-                }, 10 );
+                }, 50 );
             }
         })
         document.addEventListener('keyup', function(event)
@@ -134,6 +160,6 @@ var mouse = function(width, height, posX, posY, speed, dirX, dirY)
 }
 
 // New mouse
-var mouse1 = new mouse (50, 50, 20, 200, 4, 0, 0);
+var mouse1 = new mouse (50, 50, 20, 200, 15, 0, 0);
 mouse1.create();
 mouse1.move();

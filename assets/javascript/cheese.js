@@ -1,4 +1,5 @@
-var cheeses = [];
+var cheeses = [],
+    cheesesTotal = 10;
 
 // Create cheese object
 var cheese = function(width, height, posX, posY)
@@ -14,8 +15,6 @@ var cheese = function(width, height, posX, posY)
     // Methods
     this.create = function()
     {
-        cheeses.push(this);
-
         this.div = document.createElement('div');
         this.div.classList.add('cheese');
         this.div.style.width = this.width + 'px';
@@ -26,10 +25,19 @@ var cheese = function(width, height, posX, posY)
         var canvas = container.querySelector('.canvas');
         canvas.appendChild(this.div);
     }
+    this.update = function()
+    {
+        this.posX = randomX();
+        this.posY = randomY();
+
+        this.div.style.top = this.posY + 'px';
+        this.div.style.left = this.posX + 'px';
+    }
 }
 
-for (var i = 0; i <= 10; i++)
-{
+// Create 10 cheeses
+for (var i = 0; i < cheesesTotal; i++) {
     var cheese1 = new cheese ( 50, 50, randomX(), randomY() );
+    cheeses.push(cheese1);
     cheese1.create();
 }

@@ -1,4 +1,9 @@
 // Create mouse object
+scoreTimeout = true;
+leftMov = true;
+upMov = true;
+rightMov = true;
+downMov = true;
 var mouse = function(width, height, posX, posY, speed, dirX, dirY)
 {
     // Proprieties
@@ -40,24 +45,32 @@ var mouse = function(width, height, posX, posY, speed, dirX, dirY)
             switch (e.keyCode)
             {
                 case 37:
-                    leftPressed = true;
-                    _this.dirX = -_this.speed;
-                    _this.div.className="mouse dir270";
+                    if (leftMov == true) {
+                        leftPressed = true;
+                        _this.dirX = -_this.speed;
+                        _this.div.className="mouse dir270";
+                    }
                     break;
                 case 38:
-                    upPressed = true;
-                    _this.dirY = -_this.speed;
-                    _this.div.className="mouse dir0";
+                    if (upMov == true) {
+                        upPressed = true;
+                        _this.dirY = -_this.speed;
+                        _this.div.className="mouse dir0";
+                    }
                     break;
                 case 39:
-                    rightPressed = true;
-                    _this.dirX = _this.speed;
-                    _this.div.className="mouse dir90";
+                    if (rightMov == true) {
+                        rightPressed = true;
+                        _this.dirX = _this.speed;
+                        _this.div.className="mouse dir90";
+                    }
                     break;
                 case 40:
-                    downPressed = true;
-                    _this.dirY = _this.speed;
-                    _this.div.className="mouse dir180";
+                    if (downMov == true) {
+                        downPressed = true;
+                        _this.dirY = _this.speed;
+                        _this.div.className="mouse dir180";
+                    }
                     break;
                 default:
                     break;
@@ -84,23 +97,39 @@ var mouse = function(width, height, posX, posY, speed, dirX, dirY)
                         _this.posY += _this.dirY;
 
                     // Collision blocks
-                    // if ( _this.posX - _this.width < obstacle1.posX && _this.posX + _this.width > obstacle1.posX)
-                    // {
-                    //     if (rightPressed)
-                    //         _this.posX -= 10;
-                    //     else if (leftPressed)
-                    //         _this.posX += 10;
-                    // }
-                    // if (_this.posY - _this.height < obstacle1.posY && _this.posY + _this.height > obstacle1.posY)
-                    // {
-                    //     if (upPressed)
-                    //         _this.posY -= 10;
-                    //     else if (downPressed)
-                    //         _this.posY += 10;
-                    // }
+                    if (
+                        _this.posY - _this.height/2 < obstacle1.posY &&
+                        _this.posY + _this.height/2 > obstacle1.posY &&
+                        _this.posX - _this.width/2 < obstacle1.posX &&
+                        _this.posX + _this.width/2 > obstacle1.posX
+                    )
+                    {
+                        if (leftPressed)
+                        {
+                            rightMov = false;
+                        }
+                        else if (upPressed)
+                        {
+                            downMov = false;
+                        }
+                        else if (rightPressed)
+                        {
+                            lefttMov = false;
+                        }
+                        else if (downPressed)
+                        {
+                            upMov = false;
+                        }
+                    }
+                    else {
+                        leftMov = true;
+                        upMov = true;
+                        rightMov = true;
+                        downMov = true;
+                    }
 
                     // Eat cheese
-                    for (var i = 0; i < cheeses.length - 1; i++)
+                    for (var i = 0; i <= cheeses.length - 1; i++)
                     {
                         if (
                             _this.posY - _this.height/2 < cheeses[i].posY &&
@@ -109,34 +138,31 @@ var mouse = function(width, height, posX, posY, speed, dirX, dirY)
                             _this.posX + _this.width/2 > cheeses[i].posX
                         )
                         {
+                            cheeses[i].update();
                             score += 1;
                             scoreDiv.innerHTML = score;
                         }
                     }
 
                     // Eat rotten-cheese
-                    for (var i = 0; i < rottenCheeses.length - 1; i++) {
+                    for (var i = 0; i <= rottenCheeses.length - 1; i++) {
                         if (
-                            _this.posY - _this.height/2 < rottenCheeses[i].posY &&
-                            _this.posY + _this.height/2 > rottenCheeses[i].posY &&
-                            _this.posX - _this.width/2 < rottenCheeses[i].posX &&
-                            _this.posX + _this.width/2 > rottenCheeses[i].posX
+                            _this.posY - _this.height < rottenCheeses[i].posY &&
+                            _this.posY + _this.height > rottenCheeses[i].posY &&
+                            _this.posX - _this.width < rottenCheeses[i].posX &&
+                            _this.posX + _this.width > rottenCheeses[i].posX
                         )
                         {
-                            if (score <= 0)
-                                score = 0
-                            else
-                            {
-                                score -= 1;
-                                var blackOut1 = new blackOut();
-                                blackOut1.create();
-                                setTimeout(function()
-                                {
-                                    blackOut1.remove();
-                                }, 500);
-
-                            }
+                            rottenCheeses[i].update();
+                            score <= 0 ? score = 0 : score -= 1;
                             scoreDiv.innerHTML = score;
+
+                            var blackOut1 = new blackOut();
+                            blackOut1.create();
+                            setTimeout(function()
+                            {
+                                blackOut1.remove();
+                            }, 5000);
                         }
                     }
 

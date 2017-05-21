@@ -1,4 +1,5 @@
-var wines = [];
+var wines = [],
+    winesTotal = 7;
 
 // Create cheese object
 var wine = function(width, height, posX, posY)
@@ -14,8 +15,6 @@ var wine = function(width, height, posX, posY)
     // Methods
     this.create = function()
     {
-        wines.push(this);
-
         this.div = document.createElement('div');
         this.div.classList.add('wine');
         this.div.style.width = this.width + 'px';
@@ -28,8 +27,10 @@ var wine = function(width, height, posX, posY)
     }
 }
 
-for (var i = 0; i <= 5; i++)
+// Create 7 glasses of wine
+for (var i = 0; i < winesTotal; i++)
 {
     var wine1 = new wine ( 50, 50, randomX(), randomY() );
+    wines.push(wine1);
     wine1.create();
 }

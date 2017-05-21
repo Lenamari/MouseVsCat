@@ -1,4 +1,6 @@
 var container = document.querySelector('.container');
+var scoreDiv = container.querySelector('.score > span'),
+    score = 0;
 
 // Create canvas object
 var canvas = function(width, height)

@@ -86,9 +86,9 @@ gulp.task( 'javascript', function()
     return gulp.src(
     [
         config.js + 'canvas.js',
+        config.js + 'obstacle.js',
         config.js + 'cheese.js',
         config.js + 'mouse.js',
-        config.js + 'obstacle.js',
         config.js + 'script.js'
     ])
         .pipe( gulp_plumber(

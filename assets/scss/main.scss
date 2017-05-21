@@ -16,10 +16,13 @@ h1
     font-weight: 800;
     font-size: 24px;
     padding: 40px;
-    color: $dark-color;
+    color: $light-text;
     text-align: center;
 }
-
+.score
+{
+    padding: 1em;
+}
 .container
 {
     width: 1200px;

@@ -1,12 +1,13 @@
-var obstacles = [];
+var obstacles = [],
+    obstaclesTotal = 10;
 
 var obstacle = function(width, height, posX, posY)
 {
     this.div;
     this.width = width;
-    this.height = width;
-    this.posX = randomX();
-    this.posY = randomY();
+    this.height = height;
+    this.posX = posX;
+    this.posY = posY;
 
     this.create = function()
     {
@@ -24,5 +25,8 @@ var obstacle = function(width, height, posX, posY)
     }
 }
 
-var obstacle1 = new obstacle (100, 100, 100, 100)
-obstacle1.create();
+for (var i = 0; i < obstaclesTotal; i++) {
+    var obstacle1 = new obstacle (50, 50, randomX(), randomY() );
+    obstacles.push(obstacle1);
+    obstacle1.create();
+}

@@ -1,5 +1,5 @@
 var cheeses = [],
-    cheesesTotal = 10;
+    cheesesTotal = 5;
 
 // Create cheese object
 var cheese = function(width, height, posX, posY)

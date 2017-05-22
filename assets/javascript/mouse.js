@@ -98,29 +98,36 @@ var mouse = function(width, height, posX, posY, speed, dirX, dirY)
                     else
                         _this.posY += _this.dirY;
 
-                    // Collision blocks
-                    if (
-                        _this.posX >= obstacle1.posX - obstacle1.width/2 &&
-                        _this.posX <= obstacle1.posX + obstacle1.width/2 &&
-                        _this.posY >= obstacle1.posY - obstacle1.height/2 &&
-                        _this.posY <= obstacle1.posY + obstacle1.height/2
-                    )
+                    // Collision obstacles
+                    for (var i = 0; i <= obstacles.length - 1; i++)
                     {
-                        if (leftPressed && isPressed)
+                        if (
+                            _this.posX >= obstacles[i].posX - obstacles[i].width/1.5 &&
+                            _this.posX <= obstacles[i].posX + obstacles[i].width/1.5 &&
+                            _this.posY >= obstacles[i].posY - obstacles[i].height/1.5 &&
+                            _this.posY <= obstacles[i].posY + obstacles[i].height/1.5
+                        )
                         {
-                            console.log('left');
-                        }
-                        else if (upPressed && isPressed)
-                        {
-                            console.log('up');
-                        }
-                        else if (rightPressed && isPressed)
-                        {
-                            console.log('right');
-                        }
-                        else if (downPressed && isPressed)
-                        {
-                            console.log('down');
+                            if (leftPressed)
+                            {
+                                console.log('left');
+                                _this.posX = obstacles[i].posX + _this.width;
+                            }
+                            else if (upPressed)
+                            {
+                                console.log('up');
+                                _this.posY = obstacles[i].posY + _this.height;
+                            }
+                            else if (rightPressed)
+                            {
+                                console.log('right');
+                                _this.posX = obstacles[i].posX - _this.width;
+                            }
+                            else if (downPressed)
+                            {
+                                console.log('down');
+                                _this.posY = obstacles[i].posY - _this.height;
+                            }
                         }
                     }
 
@@ -141,7 +148,8 @@ var mouse = function(width, height, posX, posY, speed, dirX, dirY)
                     }
 
                     // Eat rotten-cheese
-                    for (var i = 0; i <= rottenCheeses.length - 1; i++) {
+                    for (var i = 0; i <= rottenCheeses.length - 1; i++)
+                    {
                         if (
                             _this.posY - _this.height < rottenCheeses[i].posY &&
                             _this.posY + _this.height > rottenCheeses[i].posY &&
@@ -158,7 +166,7 @@ var mouse = function(width, height, posX, posY, speed, dirX, dirY)
                             setTimeout(function()
                             {
                                 blackOut1.remove();
-                            }, 5000);
+                            }, 1000);
                         }
                     }
 

@@ -1,5 +1,5 @@
 var rottenCheeses = [],
-    rottenTotal = 7;
+    rottenTotal = 3;
 
 // Create cheese object
 var rottenCheese = function(width, height, posX, posY)

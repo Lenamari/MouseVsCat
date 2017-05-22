@@ -24,5 +24,5 @@ var obstacle = function(width, height, posX, posY)
     }
 }
 
-var obstacle1 = new obstacle (50, 50, 100, 100)
+var obstacle1 = new obstacle (100, 100, 100, 100)
 obstacle1.create();

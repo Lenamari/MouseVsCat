@@ -34,48 +34,50 @@ var mouse = function(width, height, posX, posY, speed, dirX, dirY)
     this.move = function()
     {
         var _this = this,
-            leftPressed,
-            upPressed,
-            rightPressed,
-            downPressed,
-            isPressed = false;
+        leftPressed,
+        upPressed,
+        rightPressed,
+        downPressed,
+        isPressed;
 
+        document.addEventListener('keyup', function(event)
+        {
+            leftPressed = false;
+            upPressed = false;
+            rightPressed = false;
+            downPressed = false;
+            isPressed = false;
+            _this.dirX = 0;
+            _this.dirY = 0;
+            clearInterval(loop);
+        }, false);
         document.addEventListener('keydown', function(e)
         {
             switch (e.keyCode)
             {
                 case 37:
-                    if (leftMov == true) {
-                        leftPressed = true;
-                        _this.dirX = -_this.speed;
-                        _this.div.className="mouse dir270";
-                    }
+                    leftPressed = true;
+                    _this.dirX = -_this.speed;
+                    _this.div.className="mouse dir270";
                     break;
                 case 38:
-                    if (upMov == true) {
-                        upPressed = true;
-                        _this.dirY = -_this.speed;
-                        _this.div.className="mouse dir0";
-                    }
+                    upPressed = true;
+                    _this.dirY = -_this.speed;
+                    _this.div.className="mouse dir0";
                     break;
                 case 39:
-                    if (rightMov == true) {
-                        rightPressed = true;
-                        _this.dirX = _this.speed;
-                        _this.div.className="mouse dir90";
-                    }
+                    rightPressed = true;
+                    _this.dirX = _this.speed;
+                    _this.div.className="mouse dir90";
                     break;
                 case 40:
-                    if (downMov == true) {
-                        downPressed = true;
-                        _this.dirY = _this.speed;
-                        _this.div.className="mouse dir180";
-                    }
+                    downPressed = true;
+                    _this.dirY = _this.speed;
+                    _this.div.className="mouse dir180";
                     break;
                 default:
                     break;
             }
-
             if (isPressed == false)
             {
                 isPressed = true;
@@ -98,34 +100,28 @@ var mouse = function(width, height, posX, posY, speed, dirX, dirY)
 
                     // Collision blocks
                     if (
-                        _this.posY - _this.height/2 < obstacle1.posY &&
-                        _this.posY + _this.height/2 > obstacle1.posY &&
-                        _this.posX - _this.width/2 < obstacle1.posX &&
-                        _this.posX + _this.width/2 > obstacle1.posX
+                        _this.posX >= obstacle1.posX - obstacle1.width/2 &&
+                        _this.posX <= obstacle1.posX + obstacle1.width/2 &&
+                        _this.posY >= obstacle1.posY - obstacle1.height/2 &&
+                        _this.posY <= obstacle1.posY + obstacle1.height/2
                     )
                     {
-                        if (leftPressed)
+                        if (leftPressed && isPressed)
                         {
-                            rightMov = false;
+                            console.log('left');
                         }
-                        else if (upPressed)
+                        else if (upPressed && isPressed)
                         {
-                            downMov = false;
+                            console.log('up');
                         }
-                        else if (rightPressed)
+                        else if (rightPressed && isPressed)
                         {
-                            lefttMov = false;
+                            console.log('right');
                         }
-                        else if (downPressed)
+                        else if (downPressed && isPressed)
                         {
-                            upMov = false;
+                            console.log('down');
                         }
-                    }
-                    else {
-                        leftMov = true;
-                        upMov = true;
-                        rightMov = true;
-                        downMov = true;
                     }
 
                     // Eat cheese
@@ -170,22 +166,16 @@ var mouse = function(width, height, posX, posY, speed, dirX, dirY)
                     _this.div.style.left= _this.posX +"px";
                     _this.div.style.top = _this.posY +"px";
 
-                }, 50 );
+                }, 10 );
             }
-        })
-        document.addEventListener('keyup', function(event)
-        {
-            isPressed = false;
-            _this.dirX = 0;
-            _this.dirY = 0;
-            clearInterval(loop);
         }, false);
+
     }
 
 
 }
 
 // New mouse
-var mouse1 = new mouse (50, 50, 20, 200, 15, 0, 0);
+var mouse1 = new mouse (50, 50, 20, 200, 6, 0, 0);
 mouse1.create();
 mouse1.move();

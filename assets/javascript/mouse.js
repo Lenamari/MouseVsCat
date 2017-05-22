@@ -108,25 +108,22 @@ var mouse = function(width, height, posX, posY, speed, dirX, dirY)
                             _this.posY <= obstacles[i].posY + obstacles[i].height/1.5
                         )
                         {
-                            if (leftPressed)
+                            switch (true)
                             {
-                                console.log('left');
-                                _this.posX = obstacles[i].posX + _this.width;
-                            }
-                            else if (upPressed)
-                            {
-                                console.log('up');
-                                _this.posY = obstacles[i].posY + _this.height;
-                            }
-                            else if (rightPressed)
-                            {
-                                console.log('right');
-                                _this.posX = obstacles[i].posX - _this.width;
-                            }
-                            else if (downPressed)
-                            {
-                                console.log('down');
-                                _this.posY = obstacles[i].posY - _this.height;
+                                case leftPressed:
+                                    _this.posX = obstacles[i].posX + _this.width;
+                                    break;
+                                case upPressed:
+                                    _this.posY = obstacles[i].posY + _this.height;
+                                    break;
+                                case rightPressed:
+                                    _this.posX = obstacles[i].posX - _this.width;
+                                    break;
+                                case downPressed:
+                                    _this.posY = obstacles[i].posY - _this.height;
+                                    break;
+                                default:
+                                    break;
                             }
                         }
                     }

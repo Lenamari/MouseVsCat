@@ -1,13 +1,7 @@
 // Create mouse object
-scoreTimeout = true;
-leftMov = true;
-upMov = true;
-rightMov = true;
-downMov = true;
-
 var mouse = function(width, height, posX, posY, speed, dirX, dirY)
 {
-    // Proprieties
+    // Properties
     this.width = width;
     this.height = height;
     this.posX = posX;
@@ -28,6 +22,7 @@ var mouse = function(width, height, posX, posY, speed, dirX, dirY)
         this.div.style.top = this.posY + 'px';
         this.div.style.left = this.posX + 'px';
 
+        // Add to canvas
         var canvas = container.querySelector('.canvas');
         canvas.appendChild(this.div);
     }
@@ -40,6 +35,8 @@ var mouse = function(width, height, posX, posY, speed, dirX, dirY)
         rightPressed,
         downPressed,
         isPressed;
+
+        // keydown event
         document.addEventListener('keydown', function(e)
         {
             switch (e.keyCode)
@@ -67,6 +64,7 @@ var mouse = function(width, height, posX, posY, speed, dirX, dirY)
                 default:
                     break;
             }
+
             if (isPressed == false)
             {
                 isPressed = true;
@@ -87,7 +85,7 @@ var mouse = function(width, height, posX, posY, speed, dirX, dirY)
                     else
                         _this.posY += _this.dirY;
 
-                    // Collision obstacles
+                    // Collision obstacle blocks
                     for (var i = 0; i <= obstacles.length - 1; i++)
                     {
                         if (
@@ -169,30 +167,6 @@ var mouse = function(width, height, posX, posY, speed, dirX, dirY)
                             wines[i].update();
                             score <= 0 ? score = 0 : score -= 1;
                             scoreDiv.innerHTML = score;
-                            setInterval(function()
-                            {
-                                switch (true)
-                                {
-                                    case (leftPressed):
-                                        e.keyCode = 39;
-                                        break;
-                                    case (upPressed):
-                                        e.keyCode = 40;
-                                        break;
-                                    case (rightPressed):
-                                        e.keyCode = 37;
-                                        break;
-                                    case (downPressed):
-                                        e.keyCode = 38;
-                                        break;
-                                    default:
-
-                                }
-                            }, 5000)
-                            setTimeout(function()
-                            {
-                                clearInterval();
-                            }, 5000)
                         }
                     }
 
@@ -213,11 +187,11 @@ var mouse = function(width, height, posX, posY, speed, dirX, dirY)
                     // Update position
                     _this.div.style.left= _this.posX +"px";
                     _this.div.style.top = _this.posY +"px";
-
                 }, 10 );
             }
         }, false);
 
+        // Keyup event
         document.addEventListener('keyup', function(event)
         {
             leftPressed = false;
@@ -232,7 +206,7 @@ var mouse = function(width, height, posX, posY, speed, dirX, dirY)
     }
 }
 
-// New mouse
+// New mouse object
 var mouse1 = new mouse (50, 50, 20, 200, 6, 0, 0);
 mouse1.create();
 mouse1.move();

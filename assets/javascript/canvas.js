@@ -1,6 +1,6 @@
-var body = document.querySelector('body');
-var container = document.querySelector('.container');
-var scoreDiv = container.querySelector('.score > span'),
+var body        = document.querySelector('body'),
+    container   = document.querySelector('.container'),
+    scoreDiv    = container.querySelector('.score > span'),
     score = 0;
 
 // Create canvas object
@@ -10,6 +10,8 @@ var canvas = function(width, height)
     this.width = width;
     this.height = height;
     this.div;
+
+    // Array that have every positions of every objects in the canvas
     this.positions = new Array();
 
     // Methods
@@ -22,23 +24,7 @@ var canvas = function(width, height)
         container.appendChild(this.div);
     }
 }
-// New canvas
+
+// New canvas object
 var canvas1 = new canvas (1200, 500);
 canvas1.create();
-
-// Blackout
-var blackOut = function()
-{
-    this.div;
-
-    this.create = function()
-    {
-        this.div = document.createElement('div');
-        this.div.classList.add('black-out');
-        body.appendChild(this.div);
-    }
-    this.remove = function()
-    {
-        this.div.remove();
-    }
-}

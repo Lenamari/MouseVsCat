@@ -1,7 +1,7 @@
 var wines = [],
     winesTotal = 7;
 
-// Create cheese object
+// Create wine object
 var wine = function(width, height, posX, posY)
 {
     // Properties

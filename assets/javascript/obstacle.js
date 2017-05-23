@@ -1,6 +1,7 @@
 var obstacles = [],
     obstaclesTotal = 10;
 
+// Create obstacle object
 var obstacle = function(width, height, posX, posY)
 {
     this.div;
@@ -25,6 +26,7 @@ var obstacle = function(width, height, posX, posY)
     }
 }
 
+// Create obstacles
 for (var i = 0; i < obstaclesTotal; i++) {
     var obstacle1 = new obstacle (50, 50, randomX(), randomY() );
     obstacles.push(obstacle1);

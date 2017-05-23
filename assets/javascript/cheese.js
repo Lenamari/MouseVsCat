@@ -11,7 +11,7 @@ var cheese = function(width, height, posX, posY)
 
     this.posX = posX;
     this.posY = posY;
-
+    // Array on every position of cheeses on canvas
     cheesePositions = [this.posX, this.posY, this.width, this.height];
 
     // Methods

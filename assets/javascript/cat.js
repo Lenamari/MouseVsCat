@@ -1,7 +1,7 @@
 var cats = [],
     catsTotal = 6;
 
-// Create cheese object
+// Create cat object
 var cat = function(width, height, speed)
 {
     // Properties
@@ -21,7 +21,8 @@ var cat = function(width, height, speed)
         this.div.style.height = this.height + 'px';
         this.div.style.top = this.posY + 'px';
         this.div.style.left = this.posX + 'px';
-
+        
+        // Add to canvas
         var canvas = container.querySelector('.canvas');
         canvas.appendChild(this.div);
     }
@@ -29,6 +30,8 @@ var cat = function(width, height, speed)
     {
         var _this = this;
         var dirX, dirY;
+
+        // Choose the direction of the cat every 2 seconds
         position = setInterval(function()
         {
             var newPos = [
@@ -38,8 +41,11 @@ var cat = function(width, height, speed)
             dirX = newPos[0][ choosePos(newPos.length) ];
             dirY = newPos[1][ choosePos(newPos.length) ];
         },2000)
+
+        // Move the cat to the direction
         move = setInterval(function()
         {
+            // Move on X axe
             if (_this.posX <= 0)
                 _this.posX = canvas1.width - _this.width -1 ;
             else if (_this.posX >= canvas1.width-_this.width)
@@ -64,7 +70,7 @@ var cat = function(width, height, speed)
                     default:
                 }
             }
-
+            // Move on Y axe
             if (_this.posY <= 0)
                 _this.posY = canvas1.height- _this.height - 1;
             else if (_this.posY >= canvas1.height-_this.height)
@@ -89,7 +95,7 @@ var cat = function(width, height, speed)
                     default:
                 }
             }
-
+            // Update position
             _this.div.style.left = _this.posX + 'px';
             _this.div.style.top = _this.posY + 'px';
         }, 10)
@@ -97,6 +103,7 @@ var cat = function(width, height, speed)
 }
 function choosePos(number) { return Math.round(Math.random() * number) }
 
+// Create cat objects
 for (var i = 0; i < catsTotal; i++)
 {
     var cat1 = new cat ( 50, 50, 10 );

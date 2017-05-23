@@ -40,18 +40,6 @@ var mouse = function(width, height, posX, posY, speed, dirX, dirY)
         rightPressed,
         downPressed,
         isPressed;
-
-        document.addEventListener('keyup', function(event)
-        {
-            leftPressed = false;
-            upPressed = false;
-            rightPressed = false;
-            downPressed = false;
-            isPressed = false;
-            _this.dirX = 0;
-            _this.dirY = 0;
-            clearInterval(loop);
-        }, false);
         document.addEventListener('keydown', function(e)
         {
             switch (e.keyCode)
@@ -230,9 +218,18 @@ var mouse = function(width, height, posX, posY, speed, dirX, dirY)
             }
         }, false);
 
+        document.addEventListener('keyup', function(event)
+        {
+            leftPressed = false;
+            upPressed = false;
+            rightPressed = false;
+            downPressed = false;
+            isPressed = false;
+            _this.dirX = 0;
+            _this.dirY = 0;
+            clearInterval(loop);
+        }, false);
     }
-
-
 }
 
 // New mouse

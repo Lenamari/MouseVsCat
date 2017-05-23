@@ -37,13 +37,13 @@ var cat = function(width, height, speed)
             ]
             dirX = newPos[0][ choosePos(newPos.length) ];
             dirY = newPos[1][ choosePos(newPos.length) ];
-        },1000)
+        },2000)
         move = setInterval(function()
         {
             if (_this.posX <= 0)
-                _this.posX = 0;
+                _this.posX = canvas1.width - _this.width -1 ;
             else if (_this.posX >= canvas1.width-_this.width)
-                _this.posX = canvas1.width - _this.width;
+                _this.posX = 1;
             else
             {
                 switch (dirX)

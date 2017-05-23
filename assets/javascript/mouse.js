@@ -208,6 +208,20 @@ var mouse = function(width, height, posX, posY, speed, dirX, dirY)
                         }
                     }
 
+                    // Collision cat
+                    for (var i = 0; i <= cats.length - 1; i++)
+                    {
+                        if (
+                            _this.posY - _this.height/2 < cats[i].posY &&
+                            _this.posY + _this.height/2 > cats[i].posY &&
+                            _this.posX - _this.width/2 < cats[i].posX &&
+                            _this.posX + _this.width/2 > cats[i].posX
+                        )
+                        {
+                            location.reload();
+                        }
+                    }
+
                     // Update position
                     _this.div.style.left= _this.posX +"px";
                     _this.div.style.top = _this.posY +"px";

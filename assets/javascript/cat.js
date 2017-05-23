@@ -2,13 +2,13 @@ var cats = [],
     catsTotal = 6;
 
 // Create cheese object
-var cat = function(width, height, posX, posY, speed)
+var cat = function(width, height, speed)
 {
     // Properties
     this.width = width;
     this.height = height;
-    this.posX = posX;
-    this.posY = posY;
+    this.posX = randomX();
+    this.posY = randomY();
 
     this.div;
 
@@ -99,7 +99,7 @@ function choosePos(number) { return Math.round(Math.random() * number) }
 
 for (var i = 0; i < catsTotal; i++)
 {
-    var cat1 = new cat ( 50, 50, canvas1.width/2, canvas1.height/2, 10 );
+    var cat1 = new cat ( 50, 50, 10 );
     cats.push(cat1);
     cat1.create();
     cat1.direction();

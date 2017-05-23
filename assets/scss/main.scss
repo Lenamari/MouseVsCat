@@ -45,7 +45,7 @@ h1
     background-position: center;
     background-repeat: no-repeat;
 }
-.mouse, .cheese, .rotten-cheese, .wine
+.mouse, .cheese, .rotten-cheese, .wine, .cat
 {
     position: absolute;
     background-size: contain;
@@ -56,6 +56,7 @@ h1
 .cheese            { background-image: url('../img/cheese.png'); }
 .rotten-cheese     { background-image: url('../img/fromage_pourri.png'); }
 .wine              { background-image: url('../img/Verre_de_vin.png'); }
+.cat              { background-image: url('../img/souris_bourrache.png'); }
 
 .dir0     { transform: rotate(0deg) };
 .dir45    { transform: rotate(45deg) };

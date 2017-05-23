@@ -10,6 +10,7 @@ var canvas = function(width, height)
     this.width = width;
     this.height = height;
     this.div;
+    this.positions = new Array();
 
     // Methods
     this.create = function()
@@ -25,6 +26,7 @@ var canvas = function(width, height)
 var canvas1 = new canvas (1200, 500);
 canvas1.create();
 
+// Blackout
 var blackOut = function()
 {
     this.div;

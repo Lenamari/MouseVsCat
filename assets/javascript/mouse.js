@@ -4,6 +4,7 @@ leftMov = true;
 upMov = true;
 rightMov = true;
 downMov = true;
+
 var mouse = function(width, height, posX, posY, speed, dirX, dirY)
 {
     // Proprieties
@@ -164,6 +165,46 @@ var mouse = function(width, height, posX, posY, speed, dirX, dirY)
                             {
                                 blackOut1.remove();
                             }, 1000);
+                        }
+                    }
+
+                    // Drink wine
+                    for (var i = 0; i <= wines.length - 1; i++)
+                    {
+                        if (
+                            _this.posY - _this.height < wines[i].posY &&
+                            _this.posY + _this.height > wines[i].posY &&
+                            _this.posX - _this.width < wines[i].posX &&
+                            _this.posX + _this.width > wines[i].posX
+                        )
+                        {
+                            wines[i].update();
+                            score <= 0 ? score = 0 : score -= 1;
+                            scoreDiv.innerHTML = score;
+                            setInterval(function()
+                            {
+                                switch (true)
+                                {
+                                    case (leftPressed):
+                                        e.keyCode = 39;
+                                        break;
+                                    case (upPressed):
+                                        e.keyCode = 40;
+                                        break;
+                                    case (rightPressed):
+                                        e.keyCode = 37;
+                                        break;
+                                    case (downPressed):
+                                        e.keyCode = 38;
+                                        break;
+                                    default:
+
+                                }
+                            }, 5000)
+                            setTimeout(function()
+                            {
+                                clearInterval();
+                            }, 5000)
                         }
                     }
 

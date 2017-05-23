@@ -90,6 +90,7 @@ gulp.task( 'javascript', function()
         config.js + 'cheese.js',
         config.js + 'rottenCheese.js',
         config.js + 'wine.js',
+        config.js + 'cat.js',
         config.js + 'mouse.js',
         config.js + 'script.js'
     ])

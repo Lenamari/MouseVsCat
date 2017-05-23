@@ -25,6 +25,14 @@ var wine = function(width, height, posX, posY)
         var canvas = container.querySelector('.canvas');
         canvas.appendChild(this.div);
     }
+    this.update = function()
+    {
+        this.posX = randomX();
+        this.posY = randomY();
+
+        this.div.style.top = this.posY + 'px';
+        this.div.style.left = this.posX + 'px';
+    }
 }
 
 // Create 7 glasses of wine

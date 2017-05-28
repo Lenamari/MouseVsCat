@@ -89,10 +89,10 @@ var mouse = function(width, height, posX, posY, speed, dirX, dirY)
                     for (var i = 0; i <= obstacles.length - 1; i++)
                     {
                         if (
-                            _this.posX >= obstacles[i].posX - obstacles[i].width/1.5 &&
-                            _this.posX <= obstacles[i].posX + obstacles[i].width/1.5 &&
-                            _this.posY >= obstacles[i].posY - obstacles[i].height/1.5 &&
-                            _this.posY <= obstacles[i].posY + obstacles[i].height/1.5
+                            _this.posX >= obstacles[i].posX - obstacles[i].width/2 &&
+                            _this.posX <= obstacles[i].posX + obstacles[i].width/2 &&
+                            _this.posY >= obstacles[i].posY - obstacles[i].height/2 &&
+                            _this.posY <= obstacles[i].posY + obstacles[i].height/2
                         )
                         {
                             switch (true)
@@ -166,6 +166,9 @@ var mouse = function(width, height, posX, posY, speed, dirX, dirY)
                         {
                             wines[i].update();
                             score <= 0 ? score = 0 : score -= 1;
+                            // Lower the speed for 5s
+                            _this.speed -= 4;
+                            var bite = setTimeout( function() { _this.speed += 4; }, 5000);
                             scoreDiv.innerHTML = score;
                         }
                     }

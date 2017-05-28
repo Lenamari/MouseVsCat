@@ -23,6 +23,9 @@ var rottenCheese = function(width, height, posX, posY)
 
         var canvas = container.querySelector('.canvas');
         canvas.appendChild(this.div);
+
+        verification(this);
+
     }
     this.update = function()
     {

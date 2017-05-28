@@ -24,6 +24,10 @@ var wine = function(width, height, posX, posY)
 
         var canvas = container.querySelector('.canvas');
         canvas.appendChild(this.div);
+        wines.push(this);
+
+        verification(this);
+
     }
     this.update = function()
     {
@@ -39,6 +43,5 @@ var wine = function(width, height, posX, posY)
 for (var i = 0; i < winesTotal; i++)
 {
     var wine1 = new wine ( 50, 50, randomX(), randomY() );
-    wines.push(wine1);
     wine1.create();
 }

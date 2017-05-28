@@ -11,7 +11,6 @@ var cat = function(width, height, speed)
     this.posY = randomY();
 
     this.div;
-
     // Methods
     this.create = function()
     {
@@ -21,10 +20,11 @@ var cat = function(width, height, speed)
         this.div.style.height = this.height + 'px';
         this.div.style.top = this.posY + 'px';
         this.div.style.left = this.posX + 'px';
-        
+
         // Add to canvas
         var canvas = container.querySelector('.canvas');
         canvas.appendChild(this.div);
+        cats.push(this);
     }
     this.direction = function()
     {
@@ -107,7 +107,6 @@ function choosePos(number) { return Math.round(Math.random() * number) }
 for (var i = 0; i < catsTotal; i++)
 {
     var cat1 = new cat ( 50, 50, 10 );
-    cats.push(cat1);
     cat1.create();
     cat1.direction();
 }

@@ -12,7 +12,6 @@ var obstacle = function(width, height, posX, posY)
 
     this.create = function()
     {
-        obstacles.push(this);
 
         this.div = document.createElement('div');
         this.div.classList.add('obstacle');
@@ -23,12 +22,12 @@ var obstacle = function(width, height, posX, posY)
 
         var canvas = container.querySelector('.canvas');
         canvas.appendChild(this.div);
+        obstacles.push(this);
     }
 }
 
 // Create obstacles
 for (var i = 0; i < obstaclesTotal; i++) {
     var obstacle1 = new obstacle (50, 50, randomX(), randomY() );
-    obstacles.push(obstacle1);
     obstacle1.create();
 }
